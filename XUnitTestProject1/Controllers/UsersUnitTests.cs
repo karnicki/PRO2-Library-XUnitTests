@@ -37,6 +37,6 @@ namespace XUnitTestProject1.Controllers
             var r = result as OkObjectResult;
             Assert.True((r.Value as ICollection<User>).Count == 3);
             Assert.True((r.Value as ICollection<User>).ElementAt(0).Name == "kowalski");
-        } 
+        }
     }
 }

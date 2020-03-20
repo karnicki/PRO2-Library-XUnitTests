@@ -64,5 +64,41 @@ namespace XUnitTestProject1.Controllers
             Assert.True(users.ElementAt(0).Login == "jd");
         }
 
+        [Fact]
+        public async Task AddUser_201Created()
+        {
+            var newUser = new User
+            {
+                IdUser = 2,
+                Email = "s17129@pjwstk.edu.pl",
+                Name = "Maciej",
+                Surname = "Karnicki",
+                Login = "s17129",
+                Password = "password",
+            };
+
+            var user = JsonConvert.SerializeObject(newUser);
+            StringContent userStringContent = new StringContent(user, Encoding.UTF8, "application/json");
+            var httpResponse = await _client.PostAsync($"{_client.BaseAddress.AbsoluteUri}api/users", userStringContent);
+
+            httpResponse.EnsureSuccessStatusCode();
+            var content = await httpResponse.Content.ReadAsStringAsync();
+            Assert.True(httpResponse.StatusCode == HttpStatusCode.Created);
+        }
+
+        [Fact]
+        public async Task GetUser_200Ok()
+        {
+            var idUser = 1;
+            var GetResponse = await _client.GetAsync($"{_client.BaseAddress.AbsoluteUri}api/users/{idUser}");
+
+            GetResponse.EnsureSuccessStatusCode();
+            var content = await GetResponse.Content.ReadAsStringAsync();
+            var users = JsonConvert.DeserializeObject<User>(content);
+
+            Assert.True(users.IdUser == idUser);
+        }
+
+
     }
 }
