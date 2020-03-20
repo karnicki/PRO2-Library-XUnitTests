@@ -8,5 +8,6 @@ namespace Library.Repositories.Interfaces
     {
         Task<BookBorrow> AddBookBorrow(BookBorrowDto borrow);
         Task<bool> ChangeBookBorrow(UpdateBookBorrowDto borrow);
+        Task<BookBorrow> GetBookBorrow(int IdBookBorrow);
     }
 }

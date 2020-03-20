@@ -46,5 +46,12 @@ namespace Library.Repositories
 
             return true;
         }
+
+        public async Task<BookBorrow> GetBookBorrow(int IdBookBorrow)
+        {
+            var bookBorrowFromDb = await _context.BookBorrow.SingleAsync(x => x.IdBookBorrow == IdBookBorrow);
+
+            return bookBorrowFromDb;
+        }
     }
 }

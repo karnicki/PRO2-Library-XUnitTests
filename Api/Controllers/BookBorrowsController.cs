@@ -32,6 +32,13 @@ namespace Library.Controllers
             return NoContent();
         }
 
-        
+        [HttpGet("{IdBookBorrow:int}")]
+        public async Task<IActionResult> GetUser([FromRoute] int IdBookBorrow)
+        {
+            var res = await _bookBorrowRepository.GetBookBorrow(IdBookBorrow);
+            return Ok(res);
+        }
+
+
     }
 }
