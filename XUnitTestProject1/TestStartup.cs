@@ -50,8 +50,6 @@ namespace XUnitTestProject1
                 c.RoutePrefix = string.Empty;
             });
 
-            
-
             app.UseMvc();
         }
     }

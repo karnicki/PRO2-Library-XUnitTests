@@ -41,7 +41,6 @@ namespace XUnitTestProject1.Controllers
                 });
 
                 _db.SaveChanges();
-
             }
         }
 
@@ -49,6 +48,7 @@ namespace XUnitTestProject1.Controllers
         [Fact]
         public async Task GetUsers_200Ok()
         {
+            //Arrange i Act
             var httpResponse = await _client.GetAsync($"{_client.BaseAddress.AbsoluteUri}api/users");
 
             httpResponse.EnsureSuccessStatusCode();
